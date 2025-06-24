@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ @keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background: #f8f9fc; /* optional */
+  min-height: 100vh;
+}

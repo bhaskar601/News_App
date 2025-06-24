@@ -1,0 +1,281 @@
+/* Modern Beautiful Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 1050;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: nowrap; /* Keep items in one line */
+  gap: 25px;
+  align-items: center;
+  overflow-x: auto; /* Allow horizontal scroll on small screens */
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.link:hover::before {
+  left: 100%;
+}
+
+.link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.link:active {
+  transform: translateY(0);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  min-width: 200px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: none;
+  border-right: none;
+  transform: translateX(-50%) rotate(45deg);
+  backdrop-filter: blur(20px);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  color: #333;
+  padding: 14px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin: 4px 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.3s;
+}
+
+.dropdown-item:hover::before {
+  left: 100%;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.dropdown-item:first-child {
+  margin-top: 8px;
+}
+
+.dropdown-item:last-child {
+  margin-bottom: 8px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 10px;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    font-size: 1.7rem;
+  }
+  
+  .nav-links {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .link {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  
+  .dropdown-menu {
+    min-width: 180px;
+    left: 0;
+    transform: translateX(0);
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    transform: translateX(0) translateY(0);
+  }
+  
+  .dropdown-menu::before {
+    left: 20px;
+    transform: rotate(45deg);
+  }
+}
+
+/* Smooth scroll behavior for sticky navbar */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add some breathing room for content below navbar */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Optional: Add a subtle animation on page load */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar {
+  animation: slideDown 1s ease-out;
+}
+
+/* Additional hover effects for the entire navbar */
+.navbar:hover {
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+}
+
+/* Glassmorphism variant (alternative style) */
+.navbar.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar.glass .logo {
+  color: #333;
+}
+
+.navbar.glass .link {
+  color: rgba(51, 51, 51, 0.8);
+}
+
+.navbar.glass .link:hover {
+  color: #333;
+}
+
+/* Ensure content doesn't go under the sticky navbar */
+.content {
+  padding-top: 80px; /* Adjust if your navbar height changes */
+}
